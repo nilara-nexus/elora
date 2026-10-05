@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Elora Boutique | Dress Your Moment</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    ✨ New Collection is Live — <strong>Free shipping above ₹2,999</strong>
+  </div>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="nav">
+
+      <a href="#home" class="logo">
+        <span class="logo-mark">E</span>
+        ELORA
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#shop">Dresses</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="scrollToShop()" title="Search">
+          🔍
+        </button>
+
+        <button class="icon-btn" onclick="openCart()" title="Cart">
+          🛒
+          <span class="count" id="cartCount">0</span>
+        </button>
+
+        <button class="icon-btn menu-btn" onclick="toggleMenu()">
+          ☰
+        </button>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+
+    <section class="hero">
+      <div class="hero-content">
+
+        <span class="hero-badge">NEW SEASON 2026</span>
+
+        <h1>
+          Dress Your
+          <span>Moment.</span>
+        </h1>
+
+        <p>
+          Discover elegant dresses designed for unforgettable moments.
+          From effortless everyday styles to statement evening looks,
+          find the dress that feels like you.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#shop" class="btn btn-primary">
+            Explore Dresses
+          </a>
+
+          <a href="#collections" class="btn btn-outline">
+            View Collections
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- COLLECTIONS -->
+    <section class="section" id="collections">
+
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Explore</div>
+          <h2 class="section-title">Our Collections</h2>
+          <p class="section-description">
+            Curated dress collections for every mood, moment and occasion.
+          </p>
+        </div>
+      </div>
+
+      <div class="categories">
+
+        <div class="category" onclick="filterCategory('Evening')">
+          <img
+            src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=900&q=85"
+            alt="Evening Dresses">
+          <div class="category-overlay">
+            <h3>Evening</h3>
+            <span>Explore Collection →</span>
+          </div>
+        </div>
+
+        <div class="category" onclick="filterCategory('Casual')">
+          <img
+            src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=900&q=85"
+            alt="Casual Dresses">
+          <div class="category-overlay">
+            <h3>Casual</h3>
+            <span>Explore Collection →</span>
+          </div>
+        </div>
+
+        <div class="category" onclick="filterCategory('Party')">
+          <img
+            src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=85"
+            alt="Party Dresses">
+          <div class="category-overlay">
+            <h3>Party</h3>
+            <span>Explore Collection →</span>
+          </div>
+        </div>
+
+        <div class="category" onclick="filterCategory('Wedding')">
+          <img
+            src="https://images.unsplash.com/photo-1594552072238-b8a33785b261?auto=format&fit=crop&w=900&q=85"
+            alt="Wedding Dresses">
+          <div class="category-overlay">
+            <h3>Wedding</h3>
+            <span>Explore Collection →</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SHOP -->
+    <section class="section" id="shop">
+
+      <div class="section-head">
+
+        <div>
+          <div class="eyebrow">Shop Elora</div>
+          <h2 class="section-title">Find Your Dress</h2>
+          <p class="section-description">
+            Beautiful silhouettes, premium fabrics and timeless designs.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="shop-controls">
+
+        <div class="search-box">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search dresses..."
+            oninput="renderProducts()">
+        </div>
+
+        <select id="sortSelect" onchange="renderProducts()">
+          <option value="default">Sort: Featured</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+        </select>
+
+        <div class="filter-buttons">
+
+          <button
+            class="filter-btn active"
+            data-filter="All"
+            onclick="filterCategory('All')">
+            All
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="Evening"
+            onclick="filterCategory('Evening')">
+            Evening
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="Casual"
+            onclick="filterCategory('Casual')">
+            Casual
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="Party"
+            onclick="filterCategory('Party')">
+            Party
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="Wedding"
+            onclick="filterCategory('Wedding')">
+            Wedding
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="products" id="productGrid"></div>
+
+    </section>
+
+
+    <!-- PROMO -->
+    <section class="promo">
+
+      <div class="promo-inner">
+
+        <div>
+          <div class="eyebrow" style="color:#ffd43b;">
+            Elora Signature
+          </div>
+
+          <h2>
+            Elegance that stays with you.
+          </h2>
+
+          <p>
+            Discover carefully designed dresses made to make
+            every entrance memorable.
+          </p>
+
+          <a href="#shop" class="btn btn-primary">
+            Shop Signature Dresses
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+
+      <div class="about-grid">
+
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1200&q=85"
+            alt="Elora Boutique Dress">
+        </div>
+
+        <div class="about-text">
+
+          <div class="eyebrow">Our Story</div>
+
+          <h2>
+            Made for your
+            <span style="color:#ffd43b;">moment.</span>
+          </h2>
+
+          <p>
+            Elora Boutique brings together contemporary fashion,
+            feminine silhouettes and timeless elegance.
+          </p>
+
+          <p>
+            Every collection is carefully selected to help you
+            express your personality through beautifully crafted
+            dresses.
+          </p>
+
+          <div class="features">
+
+            <div class="feature">
+              <strong>Premium Dresses</strong>
+              <span>Curated styles for every occasion.</span>
+            </div>
+
+            <div class="feature">
+              <strong>Easy Shopping</strong>
+              <span>Simple and secure checkout experience.</span>
+            </div>
+
+            <div class="feature">
+              <strong>Fast Delivery</strong>
+              <span>Reliable delivery across India.</span>
+            </div>
+
+            <div class="feature">
+              <strong>Easy Support</strong>
+              <span>We're here whenever you need us.</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CHECKOUT -->
+    <section class="checkout-section" id="checkout">
+
+      <div class="checkout-container">
+
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Secure Checkout</div>
+            <h2 class="section-title">Complete Your Order</h2>
+            <p class="section-description">
+              Enter your details and place your Elora order.
+            </p>
+          </div>
+        </div>
+
+        <div class="checkout-grid">
+
+          <!-- CUSTOMER FORM -->
+          <div class="checkout-card">
+
+            <h3>Delivery Details</h3>
+
+            <form id="checkoutForm">
+
+              <div class="form-grid">
+
+                <div class="form-group">
+                  <label>Full Name *</label>
+                  <input
+                    type="text"
+                    id="customerName"
+                    required
+                    placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                  <label>Phone *</label>
+                  <input
+                    type="tel"
+                    id="customerPhone"
+                    required
+                    pattern="[0-9]{10}"
+                    placeholder="10 digit mobile number">
+                </div>
+
+                <div class="form-group">
+                  <label>Email *</label>
+                  <input
+                    type="email"
+                    id="customerEmail"
+                    required
+                    placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                  <label>PIN Code *</label>
+                  <input
+                    type="text"
+                    id="customerPin"
+                    required
+                    pattern="[0-9]{6}"
+                    placeholder="6 digit PIN">
+                </div>
+
+                <div class="form-group full">
+                  <label>Address *</label>
+                  <textarea
+                    id="customerAddress"
+                    required
+                    rows="3"
+                    placeholder="House number, street, area"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label>City *</label>
+                  <input
+                    type="text"
+                    id="customerCity"
+                    required
+                    placeholder="City">
+                </div>
+
+                <div class="form-group">
+                  <label>State *</label>
+                  <select id="customerState" required>
+                    <option value="">Select state</option>
+                    <option>Tamil Nadu</option>
+                    <option>Kerala</option>
+                    <option>Karnataka</option>
+                    <option>Andhra Pradesh</option>
+                    <option>Telangana</option>
+                    <option>Maharashtra</option>
+                    <option>Delhi</option>
+                    <option>Gujarat</option>
+                    <option>West Bengal</option>
+                    <option>Rajasthan</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+              </div>
+
+
+              <h3 style="margin-top:25px;">
+                Payment Method
+              </h3>
+
+              <div class="payment-options">
+
+                <label class="payment-option selected">
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="Cash on Delivery"
+                    checked>
+                  💵 Cash on Delivery
+                </label>
+
+                <label class="payment-option">
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="UPI">
+                  📱 UPI
+                </label>
+
+                <label class="payment-option">
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="Card">
+                  💳 Credit / Debit Card
+                </label>
+
+              </div>
+
+              <button
+                type="submit"
+                class="place-order">
+                Place Order
+              </button>
+
+            </form>
+
+          </div>
+
+
+          <!-- CHECKOUT SUMMARY -->
+          <div class="checkout-card">
+
+            <h3>Order Summary</h3>
+
+            <div id="checkoutItems"></div>
+
+            <div style="margin-top:20px;">
+
+              <div class="summary-line">
+                <span>Subtotal</span>
+                <strong id="checkoutSubtotal">₹0</strong>
+              </div>
+
+              <div class="summary-line">
+                <span>Shipping</span>
+                <strong id="checkoutShipping">₹0</strong>
+              </div>
+
+              <div class="summary-line summary-total">
+                <span>Total</span>
+                <strong id="checkoutTotal">₹0</strong>
+              </div>
+
+            </div>
+
+            <div
+              style="
+                background:#eaf4ff;
+                color:#063b73;
+                padding:14px;
+                border-radius:12px;
+                margin-top:20px;
+                font-size:12px;
+                line-height:1.6;
+              ">
+              🔒 Your order details are stored locally in this
+              demo application. Connect a backend/payment gateway
+              for real production payments.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer id="contact">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+
+        <div class="logo" style="color:white;">
+          <span class="logo-mark">E</span>
+          ELORA
+        </div>
+
+        <p>
+          Contemporary dresses designed for women who want
+          to make every moment their own.
+        </p>
+
+      </div>
+
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="#shop">All Dresses</a></li>
+          <li><a href="#shop">Evening</a></li>
+          <li><a href="#shop">Casual</a></li>
+          <li><a href="#shop">Party</a></li>
+          <li><a href="#shop">Wedding</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Help</h3>
+        <ul>
+          <li>Shipping</li>
+          <li>Returns</li>
+          <li>Size Guide</li>
+          <li>Order Tracking</li>
+          <li>Support</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li>hello@eloraboutique.com</li>
+          <li>+91 98765 43210</li>
+          <li>Mon - Sat, 9AM - 7PM</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Elora Boutique. All rights reserved.</span>
+      <span>Made with elegance.</span>
+    </div>
+
+  </footer>
+
+
+  <!-- CART OVERLAY -->
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+
+  <!-- CART DRAWER -->
+  <aside class="cart-drawer" id="cartDrawer">
+
+    <div class="cart-head">
+      <h2>Your Cart</h2>
+      <button class="close" onclick="closeCart()">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-footer">
+
+      <div class="summary-line">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">₹0</strong>
+      </div>
+
+      <div class="summary-line">
+        <span>Shipping</span>
+        <strong id="cartShipping">₹0</strong>
+      </div>
+
+      <div class="summary-line summary-total">
+        <span>Total</span>
+        <strong id="cartTotal">₹0</strong>
+      </div>
+
+      <button
+        class="checkout-btn"
+        onclick="goToCheckout()">
+        Proceed to Checkout →
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal" id="successModal">
+
+    <div class="success-card">
+
+      <div class="success-icon">✓</div>
+
+      <h2>Order Confirmed!</h2>
+
+      <p id="successMessage">
+        Your Elora order has been successfully placed.
+      </p>
+
+      <button
+        class="btn btn-primary"
+        style="margin-top:20px;"
+        onclick="closeSuccess()">
+        Continue Shopping
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+
+  <script src="script.js"></script>
+
+ 
+
+</body>
+</html>
